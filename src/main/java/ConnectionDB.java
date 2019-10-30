@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class ConnectionDB {
 
-    public static final String DB_URL = "jdbc:h2:/C:/Users/viktor.nenashev/IdeaProjects/Crud/main/java/ConnectionDB";
+    public static final String DB_URL = "jdbc:h2:/C:/Users/viktor.nenashev/IdeaProjects/Crud/directory/java/ConnectionDB";
     public static final String DB_Driver = "org.h2.Driver";
     private static ConnectionDB instance;
     private Connection connection;
