@@ -2,7 +2,7 @@ package repository;
 
 import java.sql.*;
 
-public class ConnectionDB {
+public final class ConnectionDB {
 
     public static final String DB_URL = "jdbc:postgresql://localhost:5444/postgres";
     String user = "volgofant";
@@ -11,7 +11,8 @@ public class ConnectionDB {
     private static ConnectionDB instance;
     private Connection connection;
 
-    ConnectionDB() {
+
+    private ConnectionDB() {
         try {
             Class.forName(DB_Driver);
             this.connection = DriverManager.getConnection(DB_URL, user, pass);
@@ -20,11 +21,11 @@ public class ConnectionDB {
             System.out.println("Database connections Failed: " + e);
         }
     }
-    public Connection getConnection() {
+    private Connection getConnection() {
         return connection;
     }
 
-    public static ConnectionDB getInstance() throws SQLException {
+    private static ConnectionDB getInstance() throws SQLException {
         if(instance == null) {
             instance = new ConnectionDB();
         } else if (instance.getConnection().isClosed()) {
@@ -40,11 +41,13 @@ public class ConnectionDB {
     public static void connectionExecute(String sql) throws SQLException {
         connectionDate().executeUpdate(sql);
         connectionDate().close();
+        System.out.println("Отключение от БД Успешно");
     }
 
     public static void connectionExecuteQuery(ResultSet executeQuery) throws SQLException {
         executeQuery.close();
         ConnectionDB.connectionDate().close();
+        System.out.println("Отключение от БД Успешно");
     }
 
 
