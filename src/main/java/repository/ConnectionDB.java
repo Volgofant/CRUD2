@@ -4,16 +4,19 @@ import java.sql.*;
 
 public class ConnectionDB {
 
-    public static final String DB_URL = "jdbc:h2:/C:/Users/viktor.nenashev/IdeaProjects/Crud/directory/java/ConnectionDB";
-    public static final String DB_Driver = "org.h2.Driver";
+    public static final String DB_URL = "jdbc:postgresql://localhost:5444/postgres";
+    String user = "volgofant";
+    String pass = "1234";
+    public static final String DB_Driver = "org.postgresql.Driver";
     private static ConnectionDB instance;
     private Connection connection;
 
     ConnectionDB() {
         try {
-            this.connection = DriverManager.getConnection(DB_URL);
+            Class.forName(DB_Driver);
+            this.connection = DriverManager.getConnection(DB_URL, user, pass);
             System.out.println("Подключение к ДБ Успешно");
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Database connections Failed: " + e);
         }
     }

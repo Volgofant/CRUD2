@@ -1,6 +1,5 @@
 package service;
 
-import org.h2.command.dml.Delete;
 import repository.*;
 
 import java.sql.SQLException;
@@ -15,10 +14,18 @@ public class CrudService {
         }
     }
     public void insert(String name, String address, int age) {
-        new InsertDate().insertByDefaultId(name, address, age);
+        try {
+            new InsertDate().insertByDefaultId(name, address, age);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public void insert(int id, String name, String address, int age) {
-        new InsertDate().insertByHardId(id, name, address, age);
+        try {
+            new InsertDate().insertByHardId(id, name, address, age);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public void update(int id, String name) {
         try {
