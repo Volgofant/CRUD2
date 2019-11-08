@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class SqlRequestDate {
     public SqlRequestDate() throws SQLException {
-        ConnectionDB.connectionDate();
+        CommonExecution.connectionDate();
     }
     ResultSet executeQuery;
     public void sqlQuerySyntax (String sql) {
@@ -22,13 +22,13 @@ public class SqlRequestDate {
         }
     }
     public void sqlRequestSelect(String sql) throws SQLException {
-        executeQuery = ConnectionDB.connectionDate().executeQuery(sql+";");
+        executeQuery = CommonExecution.connectionDate().executeQuery(sql+";");
         while(executeQuery.next()) {
             System.out.println(executeQuery.getString("id") + " " + executeQuery.getString("name") + " " + executeQuery.getString("AGE") + " " + executeQuery.getString("adress"));
         }
-        ConnectionDB.connectionExecuteQuery(executeQuery);
+        CommonExecution.connectionExecuteQuery(executeQuery);
     }
     public void sqlRequestChange(String sql) throws SQLException {
-        ConnectionDB.connectionExecute(sql+";");
+        CommonExecution.connectionExecute(sql+";");
     }
 }

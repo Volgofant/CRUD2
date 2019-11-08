@@ -6,12 +6,12 @@ import java.sql.SQLException;
 
 public class DeleteDate {
     public DeleteDate() throws SQLException {
-        ConnectionDB.connectionDate();
+        CommonExecution.connectionDate();
 
     }
 
     public void deleteById(int id) throws SQLException {
         String sql = "DELETE FROM test WHERE id =" + id + ";";
-        ConnectionDB.connectionExecute(sql);
+        CommonExecution.connectionExecute(sql);
     }
 }

@@ -15,8 +15,8 @@ public class CreateTable {
 
     public CreateTable() {
         try {
-            ConnectionDB.connectionDate();
-            ConnectionDB.connectionDate().executeUpdate(CREATE_TABLE_QUERY);
+            CommonExecution.connectionDate();
+            CommonExecution.connectionDate().executeUpdate(CREATE_TABLE_QUERY);
         } catch (SQLException e) {
             e.printStackTrace();
         }

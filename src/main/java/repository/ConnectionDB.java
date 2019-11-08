@@ -21,11 +21,11 @@ public final class ConnectionDB {
             System.out.println("Database connections Failed: " + e);
         }
     }
-    private Connection getConnection() {
+    public Connection getConnection() {
         return connection;
     }
 
-    private static ConnectionDB getInstance() throws SQLException {
+    public static ConnectionDB getInstance() throws SQLException {
         if(instance == null) {
             instance = new ConnectionDB();
         } else if (instance.getConnection().isClosed()) {
@@ -33,22 +33,7 @@ public final class ConnectionDB {
         }
         return instance;
     }
-    public static Statement connectionDate() throws SQLException {
-        Statement stmt = getInstance().getConnection().createStatement();
-        return stmt;
-    }
 
-    public static void connectionExecute(String sql) throws SQLException {
-        connectionDate().executeUpdate(sql);
-        connectionDate().close();
-        System.out.println("Отключение от БД Успешно");
-    }
-
-    public static void connectionExecuteQuery(ResultSet executeQuery) throws SQLException {
-        executeQuery.close();
-        ConnectionDB.connectionDate().close();
-        System.out.println("Отключение от БД Успешно");
-    }
 
 
 
